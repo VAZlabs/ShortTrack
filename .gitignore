@@ -1,0 +1,57 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite
+*.log
+*.tox/
+*.coverage
+*.hypothesis/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# Configuration files
+*.env
+.envrc
+
+# Tests
+*.coverage
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# Docker
+.docker/
+
+# Flask-Migrate
+migrations/
+
+# Logs
+*.log
+
+# MacOS
+.DS_Store

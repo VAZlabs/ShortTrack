@@ -1,0 +1,42 @@
+name: CI for ShortTrack
+
+on:
+  push:
+    branches:
+      - main        # Запускается при пуше в ветку main
+  pull_request:
+    branches:
+      - main        # Запускается при создании PR в ветку main
+
+jobs:
+  build-test:
+    name: 🧪 Build & Test
+    runs-on: ubuntu-latest   # Используем Ubuntu для CI
+
+    steps:
+    # 1) Клонируем репозиторий
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 2) Настройка Python
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"  # Указываем нужную версию Python
+
+    # 3) Устанавливаем зависимости
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # 4) Запуск тестов
+    - name: Run tests
+      run: |
+        if [ -f "pytest.ini" ] || [ -d "tests" ]; then pytest -q; else echo "No tests found — skipping"; fi
+
+    # 5) Линтинг кода (опционально)
+    - name: Lint Code
+      run: |
+        pip install flake8
+        flake8 .
